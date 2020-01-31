@@ -43,7 +43,7 @@ describe('resisture', function () {
         const res = await (await request.post('/api/auth/register').send(payload));
         
         expect(res.status).toBe(201);
-        
+        expect(res.body).toHaveProperty('username');
     })
 })
 describe('login', function () {
@@ -53,7 +53,7 @@ describe('login', function () {
             "password":"password"
         }
         const res = await (await request.post('/api/auth/login').send(payload));
-        
+        expect(res.body).toHaveProperty('token')
         expect(res.status).toBe(200);
         
     })
