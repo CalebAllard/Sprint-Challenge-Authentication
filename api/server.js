@@ -11,7 +11,9 @@ const server = express();
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-
+server.get('/', (req,res) => {
+    res.status(200).json({msg: "server up and running"});
+})
 server.use('/api/auth', authRouter);
 server.use('/api/jokes', authenticate, jokesRouter);
 
